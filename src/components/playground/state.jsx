@@ -15,7 +15,8 @@ import { useState } from 'react';
  * )
  */
 const StatePlayground = ()=> {
-    let [count, setCount] = useState(0)
+    const initialCount = 0;
+    let [count, setCount] = useState(initialCount);
 
     /**
      * Increments the count state by 1.
@@ -24,10 +25,20 @@ const StatePlayground = ()=> {
         setCount(count + 1);
     }
 
+    const subtOne = () => {
+        setCount(prevCount => prevCount - 1);
+    }
+
+    const resetCount = () => {
+        setCount(initialCount);
+    }
+
   return (
     <>
         <h3>Count is : {count}</h3>
         <button onClick={addOne}>Add One</button>
+        <button onClick={subtOne}>Subtract One</button>
+        <button onClick={resetCount}>Reset</button>
     </>
   );
 }
